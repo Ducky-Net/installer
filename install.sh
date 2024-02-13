@@ -43,3 +43,12 @@ echo "Configuring Duckynet..."
 
 # update the path in config.json
 sed -i "s|/home/duckynet|$(pwd)|g" config.json
+
+# download and configure the path in service file
+curl -L https://raw.githubusercontent.com/Ducky-Net/installer/main/duckynet.service -o duckynet.service
+sed -i "s|/home/duckynet|$(pwd)|g" duckynet.service
+
+sudo mv duckynet.service /etc/systemd/system/duckynet.service
+
+systemctl enable --now duckynet
+service duckynet start
