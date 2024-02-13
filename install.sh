@@ -51,4 +51,3 @@ sed -i "s|/home/duckynet|$(pwd)|g" duckynet.service
 sudo mv duckynet.service /etc/systemd/system/duckynet.service
 
 systemctl enable --now duckynet
-service duckynet start
